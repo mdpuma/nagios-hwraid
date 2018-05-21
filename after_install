@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# detect OS
+if test -f "`which yum 2>/dev/null`"; then
+	echo "This is redhat like"
+	OS=redhat
+fi
+
+if test -f "`which dpkg 2>/dev/null`"; then
+	echo "This is debian like"
+	OS=debian
+fi
+
+if test -z "$OS"; then
+	echo 'unsupported os'
+	exit
+fi
+
+if test -f "`which systemctl 2>/dev/null`"; then
+	systemd=1
+fi
+
+case $OS in
+	redhat)
+		if [ "$systemd" = "1" ]; then
+			systemctl enable nrpe
+		else
+			chkconfig --level=235 nrpe on
+		fi
+		;;
+		
+	debian)
+		if [ "$systemd" = "1" ]; then
+			systemctl enable nagios-nrpe-server
+		else
+			update-rc.d nagios-nrpe-server enable
+		fi
+		;;
+esac
