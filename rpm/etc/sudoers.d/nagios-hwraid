@@ -1,9 +1,3 @@
-nagios ALL=(ALL) NOPASSWD:/sbin/ethtool
-nagios ALL=(ALL) NOPASSWD:/usr/lib/nagios/plugins/check_megaraid_sas
-nagios ALL=(ALL) NOPASSWD:/usr/lib/nagios/plugins/check_smartarray_v1.5.py
-nagios ALL=(ALL) NOPASSWD:/usr/lib/nagios/plugins/check_spool_size.pl 
-
 nrpe ALL=(ALL) NOPASSWD:/sbin/ethtool
 nrpe ALL=(ALL) NOPASSWD:/usr/lib64/nagios/plugins/check_megaraid_sas
-nrpe ALL=(ALL) NOPASSWD:/usr/lib64/nagios/plugins/check_smartarray_v1.5.py
-nrpe ALL=(ALL) NOPASSWD:/usr/lib64/nagios/plugins/check_spool_size.pl
+nrpe ALL=(ALL) NOPASSWD:/usr/lib64/nagios/plugins/check_smartarray_v1.5.py, /usr/lib64/nagios/plugins/check_cciss.sh, /usr/sbin/ssacli
