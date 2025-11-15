@@ -408,6 +408,7 @@ fi
 if [ "$EXCLUDE_BATTERY" = "1" ]; then
        check=`echo "$check" | grep -v 'Battery/Capacitor Status: Failed (Replace Batteries/Capacitors)'`
        check=`echo "$check" | grep -v 'Cache Status: Temporarily Disabled'`
+       check=`echo "$check" | grep -v 'Cache Status: Permanently Disabled'`
 fi
 
 if echo ${check} | egrep Failed >/dev/null; then
